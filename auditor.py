@@ -151,6 +151,9 @@ def analisar_diretorios():
                 maior_tamanho = tamanho
                 maior_arquivo = nome_arquivo
 
+                #Falta de guardar o caminho do maior 
+                caminho_maior_arquivo = caminho_completo
+
         # Solução temporária adicionada durante um teste.
         # O comando Break não é necessário, já que ele interrompe a execução do Loop feito pelo comando os.path, fazendo com que o código fosse rodado apenas uma vez, ignorando todas as outras patas e subpastas.
 
