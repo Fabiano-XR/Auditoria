@@ -142,11 +142,7 @@ def analisar_diretorios():
 
             # TODO: Confirm whether comparing the file name here
             # still represents the intended rule.
-
-            #if len(nome_arquivo) > maior_tamanho:
-            #O if estava comparando coisas erradas, nesse caso estava comparando
-            #o numero de letras do nome do arquivo com o tamanho em bytes dele.
-            if tamanho > maior_tamanho:
+            if len(nome_arquivo) > maior_tamanho:
 
                 maior_tamanho = tamanho
                 maior_arquivo = nome_arquivo
