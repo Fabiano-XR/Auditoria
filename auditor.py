@@ -5,10 +5,10 @@ import logging
 NOME_RELATORIO = "relatorio.txt"
 NOME_LOG = "auditoria.log"
 
-PASTA_PROJETO = os.getcwd()
+PASTA_PROJETO = os.path.dirname(os.path.abspath(__file__))
 
 # TODO: verificar se este caminho ainda corresponde à estrutura atual.
-PASTA_LOGS = os.path.join(PASTA_PROJETO, "log")
+PASTA_LOGS = os.path.join(PASTA_PROJETO, "logs")
 
 CAMINHO_LOG = os.path.join(
     PASTA_LOGS,
@@ -28,10 +28,9 @@ def preparar_ambiente():
 
     print("Preparando ambiente...")
 
-    # Previous implementation failed when the directory
-    # already existed. This condition was added afterwards.
-    if os.path.exists(PASTA_LOGS):
-        os.mkdir(PASTA_LOGS)
+    # O problema aqui era a existencia do código "if os.path.exists(PASTA_LOGS): os.mkdir(PASTA_LOGS)" Por que ela dizia "Se a pasta existe, crie a página" oque dá um erro, por que o Vs não consegue criar uma pasta que já existe. A solução foi usar o "os.makedirs(PASTA_LOGS, exist_ok=True)" que cria a pasta caso ela não exista, e caso ela exista, ele ignora e continua a execução do código.
+    
+    os.makedirs(PASTA_LOGS, exist_ok=True)
 
     print("Ambiente preparado.")
 
@@ -149,8 +148,7 @@ def analisar_diretorios():
                 maior_arquivo = nome_arquivo
 
         # Solução temporária adicionada durante um teste.
-        # Verificar se ainda é necessária.
-        break
+        # O comando Break não é necessário, já que ele interrompe a execução do Loop feito pelo comando os.path, fazendo com que o código fosse rodado apenas uma vez, ignorando todas as outras patas e subpastas.
 
     logging.info(
         "Análise dos diretórios finalizada."
