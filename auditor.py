@@ -7,7 +7,7 @@ NOME_LOG = "auditoria.log"
 
 PASTA_PROJETO = os.path.dirname(os.path.abspath(__file__))
 
-# TODO: verificar se este caminho ainda corresponde à estrutura atual.
+# Foi necessário alterar de "Log" pra "logs", já que esse é o nome da pasta.
 PASTA_LOGS = os.path.join(PASTA_PROJETO, "logs")
 
 CAMINHO_LOG = os.path.join(
@@ -207,9 +207,10 @@ def gerar_relatorio(
     )
 
     # Alterado anteriormente para preservar relatórios antigos.
+    # Foi removido o "a" do open, por que ele gerava um arquivo unico, e sim adicionava os resultados de cada execução. 
     with open(
         CAMINHO_RELATORIO,
-        "a",
+        "w",
         encoding="utf-8"
     ) as arquivo:
 
